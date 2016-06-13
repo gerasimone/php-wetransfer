@@ -64,7 +64,27 @@ function download($file_source, $file_target, $context)
 	return true;
 }
 
-// -- Example:  
+function resolveShortUrl($shortUrl) {
+	$longUrl = false;
+	$headers = get_headers($shortUrl);
+	$headers = array_reverse($headers);
+	foreach($headers as $header) {
+		if (strpos($header, 'Location: ') === 0) {
+			$longUrl = str_replace('Location: ', '', $header);
+			break;
+		}
+	}	
+	return $longUrl;
+}
 
-downloadWeTransfer('https://www.wetransfer.com/downloads/XXXXXXXXXX/YYYYYYYYY', 'first.zip');
-downloadWeTransfer('https://www.wetransfer.com/downloads/XXXXXXXXXX/YYYYYYYYY/ZZZZZZZZ', 'second.zip');
+function downloadWeTransfer_shortUrl( $shortUrl, $name ) {
+	$url = resolveShortUrl($shortUrl);
+	if( $url ) {
+		if (downloadWeTransfer($url, $name) ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+downloadWeTransfer_shortUrl('https://we.tl/soMEthIngElsE','wetra.zip');
