@@ -7,7 +7,7 @@ PHP script for downloading WeTransfer files (https://www.wetransfer.com/) from P
 You should have a we transfer address similar to either:  
 https://www.wetransfer.com/downloads/XXXXXXXXXX/YYYYY or  
 https://www.wetransfer.com/downloads/XXXXXXXXXX/YYYYY/ZZZZZ or
-https://we.tl/soMEthINgElsE
+<br>https://we.tl/soMEthINgElsE
 
 Include the function code somewhere, and simply call the function:
 
